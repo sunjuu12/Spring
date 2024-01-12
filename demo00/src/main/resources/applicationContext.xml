@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+<!-- 	
+	<bean id="speaker" class="com.yedam.app.spring.Speaker" /> 상위에 적어줘야함
+	<bean id="tv" class="com.yedam.app.spring.SamsungTV"> class는 패키지부터 클래스명까지 풀네임 입력해줘야 함
+		생성자에 값을 주입하는 속성
+		<constructor-arg ref="speaker" />
+		<property name="speaker" ref="speaker"></property>
+	</bean>
+ -->
+	<context:component-scan base-package="com.yedam.app.spring" />
+</beans>
