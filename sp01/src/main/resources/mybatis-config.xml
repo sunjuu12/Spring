@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings> 
+	  <setting name="jdbcTypeForNull" value="VARCHAR"/> 
+	  <setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	<typeAliases>
+	    <!-- <typeAlias alias="board" type="com.springbook.biz.board.BoardVO"/> -->
+	    <package name="com.yedam.app" /> <!-- 클래스명 별칭 등록 클래스명은 유니크 해야함. -->
+	</typeAliases>
+	<typeHandlers>
+	  <!-- java.sql.Timestamp 를 java.util.Date 형으로 반환 -->
+	  <typeHandler javaType="java.sql.Date" handler="org.apache.ibatis.type.DateTypeHandler"/>
+	</typeHandlers>
+</configuration>
