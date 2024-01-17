@@ -43,7 +43,7 @@
 		<div>
 			<button type="button" onclick="location.href='empList'">목록으로</button>
 			<button type="button" id="updateBtn">수정</button>
-			<button type="button">삭제</button>
+			<button type="button" onclick="location.href='empDelete?eid=${empInfo.employeeId}'">삭제</button>
 		</div>
 	</form>
 	<script>
@@ -54,6 +54,8 @@
 			let empInfo = getEmpInfo();
 			console.log('empInfo', empInfo);
 			
+			// 해당 정보를 기반을 Ajax
+			// QueryString : key=value&key=value... 형태.
 			fetch('empUpdate', {
 				method: 'post',
 				body: new URLSearchParams(empInfo)
@@ -64,7 +66,20 @@
 			})
 			.catch((err) => console.log(err));
 			
-			// 해당 정보를 기반을 Ajax
+			// JSON : {"kye" : "value", "key" : "value", ...}
+			fetch('empUpdateAjax', {
+				method: 'post',
+				headers: {
+					'content-type' : 'application/json'
+				},
+				body: JSON.stringify(empInfo)
+			})
+			.then(response => response.json())
+			.then(result => {
+				console.log('JSON', result);
+			})
+			.catch((err) => console.log(err));
+			
 		}
 		
 		function getEmpInfo() {

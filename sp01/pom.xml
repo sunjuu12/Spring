@@ -175,11 +175,26 @@
 			<version>2.0.6</version>
 		</dependency>   
 		
-		<!-- sql 로그 -->
+		<!-- SQL 로그 -->
 		<dependency>
 		  <groupId>org.bgee.log4jdbc-log4j2</groupId>
 		  <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
 		  <version>1.16</version>
+		</dependency>
+		
+		<!-- Tiles Setting -->
+		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-core -->
+		<dependency>
+		    <groupId>org.apache.tiles</groupId>
+		    <artifactId>tiles-core</artifactId>
+		    <version>3.0.8</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-extras -->
+		<dependency>
+		    <groupId>org.apache.tiles</groupId>
+		    <artifactId>tiles-extras</artifactId>
+		    <version>3.0.8</version>
 		</dependency>
 	</dependencies>
     <build>
