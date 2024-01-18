@@ -26,6 +26,7 @@
 	  <property name="dataSource" ref="dataSource"/>
 	  <property name="configLocation" value="classpath:mybatis-config.xml"/>
 	  <!-- mapper Location sql에 있는 xml 파일을 지정하는 항목 -->
+	  <!-- <property name="mapperLocations" value="*classpath:mapper/*.xml"/> -->
 	</bean>
 	
 	<!-- mapper scan -->
