@@ -27,9 +27,9 @@
 			</tr>
 			<tr>
 				<th>이미지</th>
-				<td><img src="<c:url value="resources/${boardInfo.image }"/>"></td>
+				<td><img style="width: 200px;" src="<c:url value="resources/${boardInfo.image }"/>"></td>
 			</tr>
 		</table>
-		<button class="btn btn-primary" type="button">수정</button>
-		<button class="btn btn-warning" type="button">삭제</button>
+		<button class="btn btn-primary" type="button" onclick="location.href='boardUpdate?bno=${boardInfo.bno }'">수정</button>
+		<button class="btn btn-warning" type="button" onclick="location.href='boardDelete?bno=${boardInfo.bno }'">삭제</button>
 </div>

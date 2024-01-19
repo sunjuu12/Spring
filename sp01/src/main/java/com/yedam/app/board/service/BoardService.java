@@ -9,7 +9,7 @@ public interface BoardService {
 	public List<BoardVO> getBoardAll();
 
 	// 단건 조회
-	public BoardVO getBoardInfBoardVO(BoardVO boardVO);
+	public BoardVO getBoardInfo(BoardVO boardVO);
 
 	// 등록
 	public int insertBoardInfo(BoardVO boardVO);

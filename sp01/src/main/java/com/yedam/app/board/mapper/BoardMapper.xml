@@ -59,9 +59,9 @@
 		UPDATE tbl_board_01
 		SET 
 			title = #{title},
-			contents = #{contents}
+			contents = #{contents},
 			writer = #{writer},
-			updatedate = sysdate
+			updatedate = sysdate,
 			image = #{image}
 		WHERE bno = #{bno}
 	</update>

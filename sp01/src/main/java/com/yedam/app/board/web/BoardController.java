@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yedam.app.board.service.BoardService;
@@ -31,7 +32,7 @@ public class BoardController {
 	// 단건조회 : URI - boardInfo / PARAMETER - BoardVO / RETURN - board/boardInfo
 	@GetMapping("boardInfo")
 	public String getBoardInfo(BoardVO boardVO, Model model) {
-		BoardVO findVO = boardService.getBoardInfBoardVO(boardVO);
+		BoardVO findVO = boardService.getBoardInfo(boardVO);
 		model.addAttribute("boardInfo", findVO);
 		return "board/boardInfo";
 	}
@@ -59,21 +60,23 @@ public class BoardController {
 	// 수정 - 페이지 : URI - boardUpdate / PARAMETER - BoardVO / RETURN -
 	// board/boardUpdate
 	@GetMapping("boardUpdate")
-	public String boardUpdateForm(BoardVO boardVO) {
+	public String boardUpdateForm(BoardVO boardVO, Model model) {
+		BoardVO findVo = boardService.getBoardInfo(boardVO);
+		model.addAttribute("boardInfo", findVo);
 		return "board/boardUpdate";
 	}
 
 	// 수정 - 처리 : URI - boardUpdate / PARAMETER - BoardVO / RETURN - 수정결과 데이터(Map)
 	@PostMapping("boardUpdate")
-	@ResponseBody
-	public Map<String, Object> boardUpdateProcess(@RequestBody BoardVO boardVO) {
+	@ResponseBody // 없으면 ajax 동작 못 함.
+	public Map boardUpdateProcess(@RequestBody BoardVO boardVO, Model model) {
 		return boardService.updateBoardInfo(boardVO);
 	}
 
 	// 삭제
 	@GetMapping("boardDelete")
-	public String boardDelete(Integer boardNo) {
-		boardService.deleteBoardInfo(boardNo);
+	public String boardDelete(@RequestParam Integer bno) {
+		boardService.deleteBoardInfo(bno);
 		return "redirect:boardList";
 	}
 }
