@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.emp.mapper.EmpMapper;
+import com.example.demo.member.mapper.MemberMapper;
 
 @Controller
 public class EmpController {
@@ -13,7 +14,7 @@ public class EmpController {
 	@Autowired
 	EmpMapper empMapper;
 
-	@GetMapping("/empList")
+	@GetMapping("/admin/empList")
 	public String empList(Model model) {
 		model.addAttribute("list", empMapper.getEmpList(null));
 		return "empList";

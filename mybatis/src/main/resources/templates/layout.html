@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>layout.html</title>
+</head>
+<body>
+	<header>
+		<ul><li>사원관리 <li>부서관리 </ul>
+	</header>
+	<section layout:fragment="content"></section>
+	<div class="divfooter" th:replace="~{footer :: copy}"></div>
+</body>
+</html>

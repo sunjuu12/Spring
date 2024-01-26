@@ -1,0 +1,14 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>empList.mustache</title>
+</head>
+<body>
+	{{ #list }}
+	<div>
+		<span>{{employeeId}}</span>
+		<span>{{firstName}}</span> // null 값이 있으면 출력 안 됨
+	</div>
+	{{/list}}
+</body>
+</html>

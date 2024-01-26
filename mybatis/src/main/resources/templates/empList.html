@@ -1,27 +1,67 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout}">
 <head>
 <meta charset="UTF-8">
 <title>empList.html</title>
+<style>
+.odd { background-color: lightgrey; }
+.trbold{ font-weight: bold; }
+</style>
 </head>
 <body>
-<div>전체 건수: [[${#lists.size(list)}]]</div>
-<div th:text="${#lists.size(list)}"></div>
-<table>
-	<tr>
-		<th>No.</th>
-		<th>employee_id</th>
-		<th>first_name</th>
-		<th>last_name</th>
-		<th>hire_date</th>
-	</tr>
-	<tr th:each="emp : ${list}">
-		<td th:text="${empStat.count}"></td>
-		<td th:text="${emp.employeeId}"></td>
-		<td th:text="${emp.firstName}"></td>
-		<td th:text="${emp.lastName}"></td>
-		<td th:text="${emp.hireDate}"></td>
-	</tr>
-</table>
+	<section layout:fragment="content">
+	<div>전체 건수: [[${#lists.size(list)}]]</div>
+	<div th:text="${#lists.size(list)}"></div>
+	<table>
+		<tr>
+			<th>No.</th>
+			<th>employee_id</th>
+			<th>first_name</th>
+			<th>last_name</th>
+			<th>name</th>
+			<th>hire_date</th>
+			<th>salary</th>
+			<th>grade</th>
+		</tr>
+		<th:block th:each="emp : ${list}">
+			<tr th:class="${empStat.odd}? 'odd'" th:classappend="${empStat.first}? 'trbold'">
+				<td th:text="${empStat.count}"></td>
+				<td><a th:href="@{info.do(employeeId=${emp.employeeId}, name=${emp.firstName})}" th:text="${emp.employeeId}"></a></td>
+				<td th:text="${emp.firstName}"></td>
+				<td th:text="${emp.lastName}"></td>
+				<td th:text="|${emp.firstName} ${emp.lastName}|"></td>
+				<td th:text="${#dates.format(emp.hireDate, 'yyyy-MMM')}">2024-01-26</td>
+				<td th:text="${emp.salary}"></td>
+				
+				<td th:if="${emp.salary} > 10000" th:text="A"></td>
+				<td th:unless="${emp.salary} > 10000" th:text="B"></td>
+			</tr>
+		</th:block>
+	</table>
+	
+	<!--/*   이렇게 쓰면 개발자창에서 안 보임
+	<!-- --> 이렇게 쓰면 개발자창에서 볼 수 있음
+	<th:block th:each="emp : ${list}">
+		<span th:text="${emp.firstName}"></span>
+		<span th:text="${emp.lastName}"></span>
+		<br>
+	</th:block>
+	*/-->
+	
+	<hr>
+	<div th:text="'<b>test</b>'"></div>
+	<div th:utext="'<b>test</b>'"></div>
+	
+	<br>
+	<div> [[ ${list[0].firstName} ]]</div>
+	<div> [( ${list[0].firstName} )]</div>
+	
+	<br>
+	<script th:inline="javascript"> //알아서 json 파싱해서 보여줌
+		let emps = [[ ${list}]]
+	</script>
+	</section>
 </body>
 </html>
